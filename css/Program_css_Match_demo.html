@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .change {
+        background-color: deepskyblue;
+      }
+      .no {
+        background-color: mediumblue;
+      }
+      @media only screen and (max-width: 600px) {
+        div.change {
+          background-color: lime;
+        }
+        .no {
+          background-color: seagreen;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>When you change the size of the webpage,</div>
+    <div class="change">this element's style will change.</div>
+    <div class="no">While this element's style will not.</div>
+  </body>
+</html>

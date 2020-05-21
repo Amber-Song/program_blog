@@ -1,0 +1,18 @@
+.byClass {
+  color: lawngreen;
+}
+#byID {
+  color: skyblue;
+}
+.byClass:hover .foundByClass {
+  color: lawngreen;
+}
+#byID:hover #foundById {
+  color: skyblue;
+}
+.byClass:hover {
+  color: black;
+}
+#byID:hover {
+  color: black;
+}

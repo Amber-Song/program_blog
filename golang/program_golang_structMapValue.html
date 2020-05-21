@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_golang.html"
+          class="codestyle"
+          >Golang</a
+        >/<a href="./program_golang_structMapValue.html" class="codestyle"
+          >\[Golang\]\ value\ in\ map\ in\ the\ struct\ can\'t\ be\ changed\!</a
+        >
+      </p>
+      <h1>[Golang] value in map in the struct can't be changed!</h1>
+
+      <div class="info">
+        There was a situation that I wanted to change the value in the map in
+        the struct. But I got an error <br />
+        <br />
+        <strong
+          >./prog.go:20:19: cannot assign to struct field pointers["a"].x in
+          map</strong
+        >
+        <br /><br />
+        It is line 20 in demo. I tried to search online. There are some answers
+        to this question.
+        <ul>
+          <li>
+            You are storing a struct by value which means that accession of that
+            struct in the map gives you a copy of the value. This is why when
+            you modify it, the struct in the map remains unmutated until you
+            overwrite it with the new copy.
+          </li>
+          <br />
+          <li>
+            For the safety during parallelism. When you are adding elements to a
+            hash, the language often has to copy all the values to a new
+            (bigger) hash table in the background. If elements can be directly
+            modified in memory, it will be impossible to keep all the copies in
+            sync.
+          </li>
+        </ul>
+        But I am still not sure about the second one. I tried in demo (line 26 -
+        30) by just changing the value in map. It works well.
+        <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="34" disabled>
+package main
+
+import (
+  "fmt"
+)
+
+type pointer struct {
+  x int
+  y int
+}
+
+var pointers map[string]pointer = make(map[string]pointer)
+
+func main() {
+  pointer0 := pointer{x:50,y:100}
+  pointers["a"] = pointer0
+  fmt.Println(pointers)
+  
+  // I want to change x to 100 now
+  // pointers["a"].x = 100
+  // fmt.Println(pointers)	
+  
+  pointers["a"] = pointer{x:100,y:100} 
+  fmt.Println(pointers)	
+  
+  x := make(map[string]string)
+  x = map[string]string{"Amber":"Hi"}
+  fmt.Println(x)
+  x["Amber"] = "Hello"
+  fmt.Println(x)
+}
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <a href="https://play.golang.org/p/q9qbmn7EwrL">Run on Go Playground</a>
+        <br />
+        <br />
+        I got the result as follow: <br />
+        map[a:{50 100}] <br />
+        map[a:{100 100}]<br />
+        map[Amber:Hi]<br />
+        map[Amber:Hello]<br />
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 33; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+<html>
+  <head>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      .webpage-wrapper {
+        width: 100%;
+        height: 100%;
+      }
+      .row {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid blue;
+        flex-wrap: wrap;
+        width: 100%;
+      }
+      .column {
+        display: flex;
+        flex-direction: column;
+        border-right: 2px solid red;
+        flex-basis: 100%; /* flex-basis is priority. flex-basis is equal to width for one element. */
+      }
+      .column-special-basis {
+        flex-basis: 50%;
+      }
+      .column-special-flex {
+        flex: 1;
+      }
+      .column-special-flex2 {
+        flex: 2;
+      }
+      .column-special-flexx {
+        flex-basis: 30px; /* If you set width, it doesn't work */
+      }
+      /* It specifies the “flex shrink factor”, which determines how much the flex item will shrink relative to 
+      the rest of the flex items in the flex container when there isn’t enough space on the row. So when I set others 
+      as flex while that one flex-grow or flex-shrinp, that element get ignored and put onto the next line. */
+      .column-flex-grow {
+        flex-grow: 1;
+        border-right: 2px solid red;
+      }
+      .column-special-flex-grow {
+        flex-grow: 3;
+        border-right: 2px solid red;
+      }
+      .column-flex-shrink {
+        flex-shrink: 1;
+        border-right: 2px solid red;
+        flex-basis: 300px;
+      }
+      .column-special-flex-shrink {
+        flex-shrink: 3;
+        border-right: 2px solid red;
+        flex-basis: 300px;
+      }
+      /* wrap make it try a new line if there is not enough space */
+      .wrap-non {
+        display: flex;
+        flex-wrap: nowrap;
+        width: 100px;
+        border: 1px solid black;
+      }
+      .wrap {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="webpage-wrapper">
+      <div class="row">
+        <div class="column column-special-basis">Column 1</div>
+        <div class="column">Column 2</div>
+        <div class="column">Column 3</div>
+      </div>
+      <div class="row">
+        <div class="column">Column 1</div>
+        <div class="column">Column 2</div>
+        <div class="column">Column 3</div>
+      </div>
+      <div class="row">
+        <div class="column column-special-flex">Column 1</div>
+        <div class="column column-special-flex">Column 2</div>
+        <div class="column column-special-flex">Column 3</div>
+        <div class="column column-special-flex2">Column 4</div>
+      </div>
+      <div class="row">
+        <div class="column column-special-flex">Column 1</div>
+        <div class="column column-special-flex">Column 2</div>
+        <div class="column column-special-flex">Column 3</div>
+        <div class="column column-special-flexx">Column 4</div>
+      </div>
+      <div class="row">
+        <div class="column-flex-grow">Column 1</div>
+        <div class="column-flex-grow">Column 2</div>
+        <div class="column-flex-grow">Column 3</div>
+        <div class="column-special-flex-grow">Column 4</div>
+      </div>
+      <div class="row">
+        <div class="column-flex-shrink">Column 1</div>
+        <div class="column-flex-shrink">Column 2</div>
+        <div class="column-flex-shrink">Column 3</div>
+        <div class="column-special-flex-shrink">Column 4</div>
+      </div>
+      <div class="wrap-non">
+        <div class="column column-special-flex">Column 1</div>
+        <div class="column column-special-flex">Column 2</div>
+        <div class="column column-special-flex">Column 3</div>
+      </div>
+      <div class="wrap">
+        <div class="column column-special-flex">Column 1</div>
+        <div class="column column-special-flex">Column 2</div>
+        <div class="column column-special-flex">Column 3</div>
+      </div>
+    </div>
+  </body>
+</html>

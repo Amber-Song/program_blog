@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+    <link rel="stylesheet" href="Program_css_selector_demo.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_css.html"
+          class="codestyle"
+          >CSS</a
+        >/<a href="./Program_css_selector.html" class="codestyle"
+          >\[CSS\]\ id\ selector\ in\ external\ css\ file\ doesn\'t\ work\!</a
+        >
+      </p>
+      <h1>
+        [CSS] id selector in external css file doesn't work! [Question mark]
+      </h1>
+
+      <div class="info">
+        I try to select the element and then apply the style on it in the
+        external CSS file. But when I selected it by its id, it doesn't work.
+        While I selected it by its class, it works. <br />
+        When I wrote this blog's demo, I found that if you just want to select
+        elements and change their style, both selecting by id and class works.
+        If you want to apply the style to the elements when your mouse hover
+        themselves, both selecting by id and class works. But if you want to
+        apply the style to the elements when your mouse hover other elements,
+        both of them doesn't work at all this time. If it doesn't work in the
+        external CSS file, it doesn't work in the internal CSS file as well.
+        There is no error. I still don't know why. <br />
+        Anyway here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="42" disabled>
+    <head>
+        <link rel="stylesheet" href="Program_css_selector_demo.css" />
+        <style>
+            .byClass {
+            color: lawngreen;
+            }
+            #byID {
+            color: skyblue;
+            }
+            .byClass:hover .foundByClass {
+            color: lawngreen;
+            }
+            #byID:hover + #foundById {
+            color: skyblue;
+            }
+            #byID:hover + #foundById1 {
+            color: skyblue;
+            }
+            .byClass:hover {
+            color: black;
+            }
+            #byID:hover {
+            color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="foundById" class="foundByClass">
+            I could change my color, could I?
+        </div>
+        <div class="byClass">
+            My color is set to lawngreen. <br />
+            But when your mouse hover me, I will pass my color to the first sentence.
+        </div>
+        <div id="byID">
+            My color is set to skyblue. <br />
+            But when your mouse hover me, I will pass my color to the first sentence.
+        </div>
+        <div id="foundById1" class="foundByClass">
+            I could change my color, could I? I can!
+        </div>
+    </body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_selector_demo.html"
+        >
+        </iframe>
+      </div>
+
+      <div class="info">
+        I searched online and found some possibilities for why it doesn't work.
+        <ol>
+          <li>
+            If you add space before :hover, that element will not change the
+            style, but all of its descendant elements will change the style.
+          </li>
+          <li>
+            If you want to change the style of other elements when you hover one
+            element, the elements you can change is descendant elements and only
+            siblings following it. If you don't add + before sibling element, it
+            still doesn't work.
+          </li>
+          <li>
+            For the tag a, a:hover isn't placed after a:link and a:visited.
+          </li>
+        </ol>
+        And I think I found the reason that I didn't work for the above demo.
+        When hovering the second element, the last element's style doesn't
+        change, because only the sibling element directly following it will
+        change. when the third element hovered, the last one changes, because it
+        is directly following it. <br />
+        Here is some example:
+        <br />
+      </div>
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code1"></div>
+        <textarea cols="30" rows="31" disabled>
+    <head>
+        <style>
+        /* This is the first example */
+        .grandparent :hover {
+            color: blue;
+        }
+        .parent :hover {
+            color: red;
+        }
+        #parentid :hover {
+            color: yellow;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="grandparent">
+        First example:
+        <div class="parent">Parent 1</div>
+        <div class="parent">
+            Parent 2
+            <div class="child">Child 1</div>
+            <div class="child">Child 2</div>
+            <div class="child">Child 3</div>
+        </div>
+        <div id="parentid">
+            Parent 3
+            <div class="child">Child 4</div>
+        </div>
+        </div>
+    </body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox=""
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_selector_demo1.html"
+        >
+        </iframe>
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code2"></div>
+        <textarea cols="30" rows="48" disabled>
+    <head>
+        <style>
+            .grandparent1:hover .parent1 {
+            color: blue;
+            }
+            .grandparent1:hover #parentid1 {
+            color: green;
+            }
+            .parent1:hover .child1 {
+            color: red;
+            }
+            .parent1:hover + .parent1 {
+            color: orange;
+            }
+            #parentid2:hover .child1 {
+            color: yellow;
+            }
+            #parentid2:hover #parentid1 {
+            color: orange;
+            }
+            #parentid1:hover #parentid2 {
+            color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="grandparent1">
+            Second example:
+            <div id="parentid1">Parent 1</div>
+            <div class="parent1">
+            Parent 2
+            <div class="child1">Child 1</div>
+            <div class="child1">Child 2</div>
+            <div class="child1">Child 3</div>
+            </div>
+            <div class="parent1">
+            Parent 3
+            </div>
+            <div class="parent1">
+            Parent 4
+            </div>
+            <div id="parentid2">
+            Parent 5
+            <div class="child1">Child 4</div>
+            </div>
+        </div>
+    </body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox=""
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_selector_demo2.html"
+        >
+        </iframe>
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 46; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+
+          text = "";
+          for (i = 1; i < 31; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code1").innerHTML = text;
+
+          text = "";
+          for (i = 1; i < 48; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code2").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

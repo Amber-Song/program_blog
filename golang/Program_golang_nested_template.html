@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_golang.html"
+          class="codestyle"
+          >Golang</a
+        >/<a href="./Program_golang_nested_template.html" class="codestyle"
+          >\[Golang\]\ Nested\ template\ definitions</a
+        >
+      </p>
+      <h1>[Golang] Nested template definitions</h1>
+
+      <div class="info">
+        <q
+          >When parsing a template, another template may be defined and
+          associated with the template being parsed. Template definitions must
+          appear at the top level of the template, much like global variables in
+          a Go program. <br />
+          The syntax of such definitions is to surround each template
+          declaration with a "define" and "end" action.</q
+        >
+        <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">HTML:</div>
+      <div class="title-for-container">Golang:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="28" disabled
+          >{{define "header"}}
+<!DOCTYPE html>
+<html>
+  <body>
+{{ end }}
+
+
+{{define "footer"}}
+  </body>
+</html>
+{{ end }}
+
+
+{{define "content"}}
+<div>Here are a list of Name:</div>
+  {{ range . }}
+    {{ if eq . "Amber" }}
+    <div>Hi {{ . }}</div>
+    {{ else }}
+    <div>Hello {{ . }}</div>
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{template "header"}}
+{{template "content" .}}
+{{template "footer"}}
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code1"></div>
+        <textarea cols="30" rows="28" disabled>
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"text/template"
+)
+
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	Name := []string{"Amber", "Bob", "David"}
+	var templates = template.Must(template.ParseGlob("demo.html"))
+	_ = templates.ExecuteTemplate(w, "demo.html", Name)
+}
+
+func main() {
+	http.HandleFunc("/demo/", homeHandler)
+	fmt.Println(http.ListenAndServe(":8080", nil))
+}
+          </textarea
+        >
+      </div>
+
+      <div class="explain">
+        The picture is shown as pic 1. In the nested template, <br />
+        <ul>
+          <li>
+            to define the templates, use {{define "templateName"}} {{ end }} and
+            write the template inside, e.g. line 1-5 in html.
+          </li>
+          <li>
+            to use the template, use {{template "templateName"}}, e.g. line
+            25-27 in html.
+          </li>
+        </ul>
+
+        To use the nested template, we need to consider about the passing data.
+        At first, I was quite confused by this part but after a while, I figured
+        out how it worked. <br />
+        <br />
+        Line 12 in Golang pass the parameter into the template or to say HTML.
+        The data I pass here is an array, so the parameter HTML file get is an
+        array without the name of the array (in this case I can't use array name
+        to get data), to get the element in an array, I directly loop through
+        "." which kind of like "this" in JS. If what I pass is a map, like
+        {"1":"Amber", "2": "Bob", "3": "David"}, I use {{ 0.1 }} to call data.
+        <br />
+        <br />
+        If I want to pass that data in the nested template, I need to add data
+        when we use the template, like line 26 in HTML. I want to pass all the
+        data in this demo, so I just use "." in line 26. If I only want to use
+        "Amber" and I use a map as data, I can pass {.1} in. <br />
+        <br />
+        *** In this situation, if I pass the data wrong or use the wrong
+        variable to get the data, I won't get error in VScode but will not get
+        any data on my browser, like pic 2. <br />
+        <br />
+        *** I made other mistakes as well. When {{if}}, {{ range }},
+        {{ block }}, {{ with }} are used, {{ end }} should go with it. There is
+        one time I missed {{ end }}. I got a panic: <br />
+        <strong>
+          http: panic serving 127.0.0.1:58807: template: demo.html:27:
+          unexpected EOF</strong
+        >
+        <br />
+        and browser looked like pic 3. <br /><br />
+        *** To compare the string, use eq, ne, lt, le, gt, ge instead of "==",
+        "!=" and so force. I made this mistake before and got a panic: <br />
+        <strong>
+          http: panic serving 127.0.0.1:62197: template: demo.html:17:
+          unexpected "=" in operand</strong
+        >
+        <br />
+        browser looked like pic 3. <br /><br />
+        *** To use the index in template, writing in this way {{index .Name 0}}.
+      </div>
+
+      <div class="explain">
+        <img
+          src="../static/Nest_template_right.png"
+          alt="right template"
+          width="300px"
+          class="image"
+        /><br />
+        <div class="pic-title">Pic 1</div>
+        <img
+          src="../static/Nest_template_withoutData.png"
+          alt="template without data"
+          width="300px"
+          class="image"
+        /><br />
+        <div class="pic-title">Pic 2</div>
+        <img
+          src="../static/Nest_template_withoutEnd.png"
+          alt="template without end"
+          width="300px"
+          class="image"
+        /><br />
+        <div class="pic-title">Pic 3</div>
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 28; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+          document.getElementById("pre-code1").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

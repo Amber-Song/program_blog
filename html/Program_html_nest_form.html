@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_html.html"
+          class="codestyle"
+          >HTML</a
+        >/
+        <a href="./Program_html_nest_form.html" class="codestyle"
+          >\[HTML\]\ form\ cant\ nest\ form.html
+        </a>
+      </p>
+      <h1>[HTML] form cant nest form.html</h1>
+
+      <div class="info">
+        I tried to nest a form in another form so that I could do different
+        actions just by clicking on the different button and calling different
+        form. But apparently I am way too naive. <br /><br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">HTML Code:</div>
+      <div class="title-for-container">Golang Code:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="41" disabled>
+<!-- demo.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <form action="/demo1/" method="post">
+      <label for="name"></label>
+      <input type="text" name="name" id="name" />
+      <input type="submit" value="submit" />
+      <form action="/demo2/" method="post">
+        <input type="password" name="password" id="password" />
+        <input type="submit" value="submit" />
+      </form>
+    </form>
+  </body>
+</html>
+
+<!-- demo1.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Hey {{.}}</h1>
+  </body>
+</html>
+
+<!-- demo2.html -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Hey {{.name}}</h1>
+    <h1>your password is {{.password}}</h1>
+  </body>
+</html>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code1"></div>
+        <textarea cols="30" rows="41" disabled>
+package main
+
+import (
+  "fmt"
+  "net/http"
+  "text/template"
+)
+
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+  var templates = template.Must(template.ParseGlob("demo.html"))
+  _ = templates.ExecuteTemplate(w, "demo.html", "")
+}
+
+func demo1Handler(w http.ResponseWriter, r *http.Request) {
+  r.ParseForm()
+  name := r.Form.Get("name")
+  password := r.Form.Get("password")
+  fmt.Println("This is form 1.")
+  fmt.Println("Name is ", name, " . Password is ", password)
+  var templates = template.Must(template.ParseGlob("demo1.html"))
+  _ = templates.ExecuteTemplate(w, "demo1.html", name)
+}
+
+func demo2Handler(w http.ResponseWriter, r *http.Request) {
+  r.ParseForm()
+  name := r.Form.Get("name")
+  password := r.Form.Get("password")
+  fmt.Println("This is form 2.")
+  fmt.Println("Name is ", name, " . Password is ", password)
+  var templates = template.Must(template.ParseGlob("demo2.html"))
+  _ = templates.ExecuteTemplate(w, "demo2.html", map[string]string{"name": name, "password": password})
+}
+
+func main() {
+  http.HandleFunc("/demo/", homeHandler)
+  http.HandleFunc("/demo1/", demo1Handler)
+  http.HandleFunc("/demo2/", demo2Handler)
+  fmt.Println(http.ListenAndServe(":8080", nil))
+}
+            </textarea
+        >
+      </div>
+
+      <div class="info">
+        No matter which submit button I click, it will only call the first form.
+        But it did get all the data even that data is behind it.
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          // TODO: change the i < max to how many lines in the code
+          for (let i = 1; i < 41; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+          document.getElementById("pre-code1").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

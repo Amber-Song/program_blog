@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_css.html"
+          class="codestyle"
+          >CSS</a
+        >/<a href="./Program_css_height.html" class="codestyle"
+          >\[CSS\]\ height:100%\ doesn\'t\ work\!</a
+        >
+      </p>
+      <h1>[CSS] height:100% doesn't work!</h1>
+
+      <div class="info">
+        I want to make the content take over the whole screen but it only set
+        the body element's height didn't work! Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="15" disabled>
+<head>
+    <style>
+        div.wholeScreen {
+        height: 100%;
+        background-color: khaki;
+        }
+    </style>
+</head>
+<body>
+    <div class="wholeScreen">
+        This content should take the whole screen even it only has two sentences.
+        But it didn't, we could tell by the background color.
+    </div>
+</body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_height_demo.html"
+        >
+        </iframe>
+      </div>
+
+      <div class="info">
+        As it is said online that if the height is set by percentage, the value
+        of the height depends on the height of the parent element. However, the
+        body and html elements, in this case, have no default value and their
+        heights depend on the total height of all the descendants' height which
+        means height:100% in the div will not take the whole screen. <br />
+        To solve this, you could also set the html and body to 100% or you could
+        set the height to 100vh. vh relative to 1% of the height of the
+        viewport.
+      </div>
+
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <div class="code-container">
+        <div class="pre-code" id="pre-code1"></div>
+        <textarea cols="30" rows="16" disabled>
+<head>
+    <style>
+        html, body {
+            height: 100%;
+        }
+        div.wholeScreen {
+        height: 100%;
+        background-color: khaki;
+        }
+    </style>
+</head>
+<body>
+    <div class="wholeScreen">
+        Now it works.
+    </div>
+</body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_height_demo1.html"
+        >
+        </iframe>
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 17; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+          document.getElementById("pre-code1").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

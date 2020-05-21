@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .child {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        border: 1px solid blue;
+      }
+      .parent-relative {
+        position: relative;
+        border: 1px solid red;
+        width: 300px;
+        height: 200px;
+      }
+      .parent-noposition {
+        border: 1px solid red;
+        width: 300px;
+        height: 200px;
+      }
+      .grandparent-relative {
+        position: relative;
+        border: 1px solid green;
+        width: 400px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      When the child element's position is set to absolute, the parent element
+      should set to relative. Or the layout will look like this:
+    </p>
+    <div class="parent-noposition">
+      <p>Parent 1 : default position</p>
+      <div class="child">
+        Child 1 : parent is default position.
+      </div>
+    </div>
+    <p>When the parent element is set to relative, it looks like this:</p>
+    <div class="parent-relative">
+      <p>Parent 2 : position: relative;</p>
+      <div class="child">
+        Child 2 : parent position is relative.
+      </div>
+    </div>
+    <p>
+      When the parent element didn't set but the grandparent position is set to
+      relative, it looks like this:
+    </p>
+    <div class="grandparent-relative">
+      <p>Grandparent 3 : position: relative;</p>
+      <div class="parent-noposition">
+        <p>Parent 3 : default position</p>
+        <div class="child">
+          Child 3 : grandparent position is relative.
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

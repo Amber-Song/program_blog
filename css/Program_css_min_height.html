@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <!-- TODO: <a> title & href need to change -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_css.html"
+          class="codestyle"
+          >CSS</a
+        >/<a href="./Program_css_min_height.html" class="codestyle"
+          >\[CSS\]\ height\ or\ min-height\?</a
+        >
+      </p>
+      <h1>[CSS] height or min-height?</h1>
+
+      <div class="info">
+        There was one time I used the grid in CSS. As there was one sentence too
+        long for just one line, it wrapped to another line. The problem is the
+        rest of the content just crashed into each other. I didn't notice I set
+        the height a fixed value at that time. <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="30" disabled>
+<head>
+    <style>
+        .grid-container {
+        display: grid;
+        display: -ms-grid;
+        grid-template-columns: repeat(10, 10%);
+        height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-container">
+        <div>Line 1: this is a very long sentence.</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 1</div>
+        <div>Line 2</div>
+        <div>Line 2</div>
+        <div>Line 2</div>
+        <div>Line 2</div>
+        <div>Line 2</div>
+    </div>
+</body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_min_height_demo.html"
+        >
+        </iframe>
+      </div>
+
+      <div class="info">
+        By setting min-height rather than height, I solved this problem. And I
+        wonder when to use height and when to use min-height. <br />
+        when you want the height of the element is fixed not affected by the
+        content inside the element, use height. overflow: scroll could go
+        together with height to show the whole element.
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 30; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

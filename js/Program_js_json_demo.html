@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div>Here is <strong>wrong</strong> demo:</div>
+    <div id="wrong"></div>
+    <hr />
+    <div>Here is <strong>right</strong> demo:</div>
+    <div id="right"></div>
+    <script>
+      let dudRestaurant = {
+        "Morning Magpie": [
+          {
+            Name: "Ice coffee",
+            Contain: "coffee, milk, cream, ice cream",
+            Price: "$7",
+            V: "Vegetarian Friendly"
+          }
+        ],
+        "Union Co Cafe": [
+          {
+            Name: "Mochaccino",
+            Contain: "Coffee, Hot chocolate, Milk",
+            Price: "$?",
+            V: "Vegetarian Friendly"
+          },
+          {
+            Name: "Panforte and Long black",
+            Contain: "I dont know either",
+            Price: "$? &amp; $?",
+            V: "Vegetarian Friendly"
+          }
+        ]
+      };
+
+      let wrongText = "";
+      let rightText = "";
+      for (restaurant in dudRestaurant) {
+        wrongText += "<h3>" + restaurant + "</h3>";
+        rightText += "<h3>" + restaurant + "</h3>";
+        // This is the wrong demo
+        for (dishId in restaurant) {
+          wrongText +=
+            restaurant[dishId].Name +
+            " is " +
+            restaurant[dishId].Price +
+            "<br/>";
+        }
+        // This is the right demo
+        for (dishId in dudRestaurant[restaurant]) {
+          rightText +=
+            dudRestaurant[restaurant][dishId].Name +
+            " is " +
+            dudRestaurant[restaurant][dishId].Price +
+            "<br/>";
+        }
+      }
+      document.getElementById("wrong").innerHTML = wrongText;
+      document.getElementById("right").innerHTML = rightText;
+    </script>
+  </body>
+</html>

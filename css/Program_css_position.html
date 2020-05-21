@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_css.html"
+          class="codestyle"
+          >CSS</a
+        >/<a href="./Program_css_position.html" class="codestyle"
+          >\[CSS\]\ position:absolute\ doesn\'t\ work\!</a
+        >
+      </p>
+      <h1>[CSS] position:absolute doesn't work!</h1>
+
+      <div class="info">
+        When I set position: absolute;, I found that that element isn't placed
+        related to its parent, it is placed related to the screen instead. So I
+        searched online, it is said that the statement will work when its parent
+        set position to relative. <br />
+        And also left and the top is to specify where to start instead of the
+        centre of the element.<br />
+        Here is the demo:
+      </div>
+
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- All the left hand side is coding -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="50" disabled>
+  <style>
+    .child {
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      border: 1px solid blue;
+    }
+    .parent-relative {
+      position: relative;
+      border: 1px solid red;
+      width: 300px;
+      height: 200px;
+    }
+    .parent-noposition {
+      border: 1px solid red;
+      width: 300px;
+      height: 200px;
+    }
+    .grandparent-relative {
+      position: relative;
+      border: 1px solid green;
+      width: 400px;
+      height: 200px;
+    }
+  </style>
+
+  <body>
+    <div class="parent-noposition">
+      <p>Parent 1 : default position</p>
+      <div class="child">
+        Child 1 : parent is default position.
+      </div>
+    </div>
+    <div class="parent-relative">
+      <p>Parent 2 : position: relative;</p>
+      <div class="child">
+        Child 2 : parent position is relative.
+      </div>
+    </div>
+    <div class="grandparent-relative">
+      <p>Grandparent 3 : position: relative;</p>
+      <div class="parent-noposition">
+        <p>Parent 3 : default position</p>
+        <div class="child">
+          Child 3 : grandparent position is relative.
+        </div>
+      </div>
+    </div>
+  </body>
+          </textarea
+        >
+      </div>
+
+      <!-- All the right hand side is result -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_position_demo.html"
+        >
+        </iframe>
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 50; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

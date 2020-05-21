@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* This is the first example */
+      .grandparent :hover {
+        color: blue;
+      }
+      .parent :hover {
+        color: red;
+      }
+      #parentid :hover {
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandparent">
+      First example:
+      <div class="parent">Parent 1</div>
+      <div class="parent">
+        Parent 2
+        <div class="child">Child 1</div>
+        <div class="child">Child 2</div>
+        <div class="child">Child 3</div>
+      </div>
+      <div id="parentid">
+        Parent 3
+        <div class="child">Child 4</div>
+      </div>
+    </div>
+  </body>
+</html>

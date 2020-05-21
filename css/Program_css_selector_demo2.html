@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .grandparent1:hover .parent1 {
+        color: blue;
+      }
+      .grandparent1:hover #parentid1 {
+        color: green;
+      }
+      .parent1:hover .child1 {
+        color: red;
+      }
+      .parent1:hover + .parent1 {
+        color: orange;
+      }
+      #parentid2:hover .child1 {
+        color: yellow;
+      }
+      #parentid2:hover #parentid1 {
+        color: orange;
+      }
+      #parentid1:hover #parentid2 {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grandparent1">
+      Second example:
+      <div id="parentid1">Parent 1</div>
+      <div class="parent1">
+        Parent 2
+        <div class="child1">Child 1</div>
+        <div class="child1">Child 2</div>
+        <div class="child1">Child 3</div>
+      </div>
+      <div class="parent1">
+        Parent 3
+      </div>
+      <div class="parent1">
+        Parent 4
+      </div>
+      <div id="parentid2">
+        Parent 5
+        <div class="child1">Child 4</div>
+      </div>
+    </div>
+  </body>
+</html>

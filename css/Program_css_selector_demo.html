@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="Program_css_selector_demo.css" />
+    <style>
+      .byClass {
+        color: lawngreen;
+      }
+      #byID {
+        color: skyblue;
+      }
+      .byClass:hover .foundByClass {
+        color: lawngreen;
+      }
+      #byID:hover + #foundById {
+        color: skyblue;
+      }
+      #byID:hover + #foundById1 {
+        color: skyblue;
+      }
+      .byClass:hover {
+        color: black;
+      }
+      #byID:hover {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="foundById" class="foundByClass">
+      I could change my color, could I?
+    </div>
+    <div class="byClass">
+      My color is set to lawngreen. <br />
+      But when your mouse hover me, I will pass my color to the first sentence.
+    </div>
+    <div id="byID">
+      My color is set to skyblue. <br />
+      But when your mouse hover me, I will pass my color to the first sentence.
+    </div>
+    <div id="foundById1" class="foundByClass">
+      I could change my color, could I? I can!
+    </div>
+  </body>
+</html>

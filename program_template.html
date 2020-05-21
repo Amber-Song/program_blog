@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <!-- TODO: <a> title & href need to change -->
+      <p class="title">
+        amber$ cd <a href="./Program_main.html" class="codestyle">main</a>/<a
+          href="./Program_css.html"
+          class="codestyle"
+          >CSS</a
+        >/<a href="./Program_css_position.html" class="codestyle"
+          >\[CSS\]\ position:absolute\ doesn\'t\ work\!</a
+        >
+      </p>
+      <!-- TODO: <h1> title need to change -->
+      <h1>TITLE</h1>
+
+      <!-- TODO: add description for your question and answer -->
+      <div class="info">
+        Balabalabal Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <!-- TODO: change the number of rows to the number -->
+        <textarea cols="30" rows="50" disabled>
+            <!-- TODO: code goes here! -->
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <!-- TODO: src need to change -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_position_demo.html"
+        >
+        </iframe>
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          // TODO: change the i < max to how many lines in the code
+          for (let i = 1; i < 50; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

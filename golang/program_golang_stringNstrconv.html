@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_golang.html"
+          class="codestyle"
+          >Golang</a
+        >/<a href="./program_golang_stringNstrconv.html" class="codestyle"
+          >\[Golang\]\ string\(\)\ and\ strconv\.Itoa\(\)</a
+        >
+      </p>
+      <h1>[Golang] string() and strconv.Itoa()</h1>
+
+      <div class="info">
+        I thought converting int to string can be achieved by string(). However,
+        I found it can't actually achieve what I want. So I found strconv.Itoa()
+        in strings package. <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="17" disabled>
+package main
+
+import (
+  "fmt"
+  "strconv"
+)
+
+func main() {
+  integer := 9
+  str1 := string(integer)
+  str2 := strconv.Itoa(integer)
+  fmt.Printf("str1: %T type ---- value: %v \n", str1, str1)
+  fmt.Printf("str2: %T type ---- value: %v \n", str2, str2)
+}
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <a href="https://play.golang.org/p/WC5UjgV7HRW">Run on Go Playground</a>
+        <br />
+        <br />
+        I got the result as follow: <br />
+        str1: string type ---- value: <br />
+        str2: string type ---- value: 9 <br /><br />
+        I didn't get any value when I used the string() to convert.
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 16; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

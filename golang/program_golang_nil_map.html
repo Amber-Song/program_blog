@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_golang.html"
+          class="codestyle"
+          >Golang</a
+        >/<a href="./program_golang_nil_map.html" class="codestyle"
+          >\[Golang\]\ nil\ map\ cause\ panic</a
+        >
+      </p>
+      <h1>[Golang] nil map cause panic</h1>
+
+      <div class="info">
+        When creating a new map variable, it is very easy to declare the map and
+        forget to initiate the map which will cause a panic. <br />
+        <strong> panic: assignment to entry in nil map </strong><br />
+        That is what I did. I used line 8 instead of line 9 to declare and
+        didn't initiate. <br />
+        <br />
+        So to solve this problem, I could either
+        <ul>
+          <li>declare and initiate at the same time, like line 9,</li>
+          <li>
+            or declare and initiate at different time, like line 15 and 16.
+          </li>
+        </ul>
+        And also when you assign data to an array or a map or struct, you have
+        to add what type it is in front of {} , like line 10 and 16. Or you will
+        get a panic: <br />
+        <strong>
+          ./prog.go:10:18: syntax error: unexpected {, expecting expression
+          <br />
+          ./prog.go:11:2: syntax error: non-declaration statement outside
+          function body </strong
+        ><br />
+        <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="24" disabled>
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  // var x map[string][]string
+  x := make(map[string][]string)
+  x["20200409"] = []string{"wash dishes", "water garden"}
+  for _, todoItem := range x["20200409"] {
+    fmt.Println(todoItem)
+  }
+  
+  var y map[string]bool
+  y = map[string]bool{}
+  y["wash dishes"] = true
+  y["water garden"] = false
+  for todoItem, complete := range y {
+    fmt.Println(todoItem, " is ", complete)
+  }
+}
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <a href="https://play.golang.org/p/7Aqky8QelnZ">Run on Go Playground</a>
+        <br />
+        <br />
+        I got the result as follow: <br />
+        wash dishes <br />
+        water garden<br />
+        wash dishes is true<br />
+        water garden is false<br />
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          // TODO: change the i < max to how many lines in the code
+          for (let i = 1; i < 23; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>
