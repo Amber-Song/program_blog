@@ -1,0 +1,126 @@
+<html>
+  <head>
+    <style>
+      div {
+        width: 200px;
+        height: 400px;
+        border: 3px solid lightsalmon;
+        padding: 20px;
+        margin: 30px;
+        overflow: scroll;
+        overflow-x: scroll;
+      }
+      hr {
+        border: 1px solid lightsalmon;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <em>window.innerWidth</em> is <span id="innerWidth"></span><br />
+    <em>window.innerHeight</em> is <span id="innerHeight"></span><br />
+    <em>window.outerWidth</em> is <span id="outerWidth"></span><br />
+    <em>window.outerHeight</em> is <span id="outerHeight"></span><br />
+    <span>Client window width: </span> <span id="windowWidth"></span><br />
+    <span>Client window height: </span> <span id="windowHeight"></span><br />
+    <div
+      style="width: 200px; height: 400px; border: 3px solid lightsalmon; padding: 20px; margin: 30px; overflow: scroll;"
+      id="box"
+    >
+      &lt;style&gt; <br />
+      width: 200px; <br />
+      height: 400px; <br />
+      border: 3px solid lightsalmon;<br />
+      padding: 20px;<br />
+      margin: 30px;<br />
+      overflow: scroll; <br />
+      &lt;style&gt;
+      <br />
+      <hr />
+      Using style to get <em>width</em> is <span id="width"></span>;
+      <em>height</em> is <span id="height"></span><br />
+      If the height is not set, <em>width</em> will be
+      <span id="spanwidth"></span> <em>height</em> will be
+      <span id="spanheight"></span><br />
+      <br />
+      <hr />
+      <em>Element.clientWidth</em> is <span id="clientWidth"></span><br />
+      <em>Element.clientHeight</em> is <span id="clientHeight"></span><br />
+      <span id="spanElement" style="width:50px;"
+        >Element.clientWidth of span tag is
+      </span>
+      <span id="spanclientWidth"></span>
+      <span>Element.clientHeight of span tag is </span>
+      <span id="spanclientHeight"></span>
+      <br />
+      <hr />
+      <em>HTMLElement.offsetWidth</em> is <span id="offsetWidth"></span>
+      <em>HTMLElement.offsetHeight</em> is <span id="offsetHeight"></span>
+      <div style="display:none" id="hidden">hidden element</div>
+      <span>HTMLElement.offsetWidth of hidden element is</span>
+      <span id="hiddenoffsetWidth"></span>
+      <span>HTMLElement.offsetHeight of hidden element is</span
+      ><span id="hiddenoffsetHeight"></span>
+      <br />
+      <hr />
+      <em>Element.scrollWidth</em> is <span id="scrollWidth"></span>
+      <em>Element.scrollHeight</em> is <span id="scrollHeight"></span>
+    </div>
+    <script>
+      let innerWidth = window.innerWidth;
+      let innerHeight = window.innerHeight;
+      document.getElementById("innerWidth").innerHTML = innerWidth + "px";
+      document.getElementById("innerHeight").innerHTML = innerHeight + "px";
+
+      let outerWidth = window.outerWidth;
+      let outerHeight = window.outerHeight;
+      document.getElementById("outerWidth").innerHTML = outerWidth + "px";
+      document.getElementById("outerHeight").innerHTML = outerHeight + "px";
+
+      let windowWidth = document.documentElement.clientWidth;
+      let windowHeight = document.documentElement.clientHeight;
+      document.getElementById("windowWidth").innerHTML = windowWidth + "px";
+      document.getElementById("windowHeight").innerHTML = windowHeight + "px";
+
+      let width = document.getElementById("box").style.width;
+      let height = document.getElementById("box").style.height;
+      document.getElementById("width").innerHTML = width;
+      document.getElementById("height").innerHTML = height;
+
+      let spanwidth = document.getElementById("spanElement").style.width;
+      let spanheight = document.getElementById("spanElement").style.height;
+      document.getElementById("spanwidth").innerHTML = spanwidth;
+      document.getElementById("spanheight").innerHTML = spanheight;
+
+      let clientWidth = document.getElementById("box").clientWidth;
+      let clientHeight = document.getElementById("box").clientHeight;
+      document.getElementById("clientWidth").innerHTML = clientWidth + "px";
+      document.getElementById("clientHeight").innerHTML = clientHeight + "px";
+
+      let spanclientWidth = document.getElementById("spanElement").clientWidth;
+      let spanclientHeight = document.getElementById("spanElement")
+        .clientHeight;
+      document.getElementById("spanclientWidth").innerHTML =
+        spanclientWidth + "px";
+      document.getElementById("spanclientHeight").innerHTML =
+        spanclientHeight + "px";
+
+      let offsetWidth = document.getElementById("box").offsetWidth;
+      let offsetHeight = document.getElementById("box").offsetHeight;
+      document.getElementById("offsetWidth").innerHTML = offsetWidth + "px";
+      document.getElementById("offsetHeight").innerHTML = offsetHeight + "px";
+
+      let hiddenoffsetWidth = document.getElementById("hidden").offsetWidth;
+      let hiddenoffsetHeight = document.getElementById("hidden").offsetHeight;
+      document.getElementById("hiddenoffsetWidth").innerHTML =
+        hiddenoffsetWidth + "px";
+      document.getElementById("hiddenoffsetHeight").innerHTML =
+        hiddenoffsetHeight + "px";
+
+      let scrollWidth = document.getElementById("box").scrollWidth;
+      let scrollHeight = document.getElementById("box").scrollHeight;
+      document.getElementById("scrollWidth").innerHTML = scrollWidth + "px";
+      document.getElementById("scrollHeight").innerHTML = scrollHeight + "px";
+    </script>
+  </body>
+</html>

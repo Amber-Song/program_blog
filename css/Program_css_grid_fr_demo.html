@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <style>
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+        grid-gap: 20px;
+      }
+      .grid-fr {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+      }
+      .grid-another {
+        display: grid;
+        grid-template-columns: 50px 50% 30% 20%;
+        grid-gap: 20px;
+      }
+      .grid-fr-another {
+        display: grid;
+        grid-template-columns: 50px 5fr 3fr 2fr;
+        grid-gap: 20px;
+      }
+      .blue {
+        background-color: deepskyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid">
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+    </div>
+    <div class="grid-fr">
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+    </div>
+    <div class="grid-another">
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+    </div>
+    <div class="grid-fr-another">
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+      <div class="blue">Hi!</div>
+    </div>
+  </body>
+</html>

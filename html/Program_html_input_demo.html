@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <style>
+      div.form {
+        line-height: 24px;
+        display: grid;
+        grid-template-columns: 250px auto;
+      }
+      input {
+        max-width: 250px;
+      }
+      .without-outline {
+        outline: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <span>Is the font too small, make it larger: </span>
+      <span>16px</span>
+      <input type="range" min="16" max="32" name="size" />
+      <span>32px</span>
+    </div>
+    <div>
+      <label for="color"
+        >Do you want to choose a color for the background?
+      </label>
+      <input type="color" name="color" />
+    </div>
+    <hr />
+
+    <div class="form">
+      <span>Name</span>
+      <input type="text" name="name" required />
+    </div>
+    <div class="form">
+      <span>Password</span> <input type="password" name="password" />
+    </div>
+    <div class="form">
+      <span>Birthday </span>
+      <input type="date" name="birthday" required />
+    </div>
+    <div class="form">
+      <span>Email </span>
+      <input
+        type="email"
+        name="email"
+        pattern=".+@gmail.com"
+        size="30"
+        required
+      />
+    </div>
+    <div class="form">
+      <span>Work experience: </span>
+      <input type="number" name="year" min="0" max="40" />
+    </div>
+    <div class="form">
+      <span>Gender</span> <span></span>
+      <input type="radio" name="gender" id="female" value="Female" />
+      <label for="female">Female</label>
+      <input type="radio" name="gender" id="male" value="Male" />
+      <label for="male">Male</label>
+      <input type="radio" name="gender" id="other" value="Other gender" />
+      <label for="other">Other gender</label>
+    </div>
+    <div class="form">
+      <span>file</span>
+      <input type="file" name="" id="" />
+    </div>
+    <hr />
+    <div class="form">
+      <label for="todo">Do you like organized life? </label>
+      <input type="checkbox" name="todo" />
+    </div>
+    <div class="form">
+      <span>Choose a month</span>
+      <input type="month" name="now" class="without-outline" />
+    </div>
+    <div class="form">
+      <span>Choose a week</span>
+      <input type="week" name="week" class="without-outline" />
+    </div>
+    <div class="form">
+      <span>Time</span
+      ><input type="time" name="meeting" class="without-outline" />
+    </div>
+    <div><input type="hidden" value="hidden" /></div>
+
+    <div>
+      <span
+        >Input your personal website, or checkout this one for more information
+        about input tag</span
+      >
+      <input
+        type="url"
+        name="url"
+        id="url"
+        placeholder="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/url"
+        required
+      />
+    </div>
+
+    <div>
+      <input type="reset" value="reset" />
+      <input type="button" value="submit" />
+    </div>
+  </body>
+</html>

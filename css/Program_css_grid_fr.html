@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_css.html"
+          class="codestyle"
+          >CSS</a
+        >/<a href="./Program_css_grid_fr.html" class="codestyle"
+          >\[CSS\]\ Using\ fr\ instead\ of\ percentage\ in\ grid</a
+        >
+      </p>
+      <h1>[CSS] Using fr instead of percentage in grid</h1>
+
+      <div class="info">
+        fr is a quite recent feature add in grid. Before this one came out, I
+        sometimes use grid-template-columns: repeat(2, 50%); or
+        grid-template-columns: 50px 50% 30% 20%; to devide the columns, but it
+        didn't come out as I thought when I have grid-gap as part of the style.
+        Because for repeat(2, 50%) when the percentage is used, it works in a
+        way that 100% width is divided into two columns each of which is 50%, so
+        when grid-gap is added, the actual width is more than 100%. You can tell
+        from the result of grid-template-columns: 50px 50% 30% 20%; . But when
+        fr is used, the width excluding the gap will be divided based on the
+        ratio. <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="50" disabled>
+<head>
+  <style>
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-gap: 20px;
+    }
+    .grid-fr {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 20px;
+    }
+    .grid-another {
+      display: grid;
+      grid-template-columns: 50px 50% 30% 20%;
+      grid-gap: 20px;
+    }
+    .grid-fr-another {
+      display: grid;
+      grid-template-columns: 50px 5fr 3fr 2fr;
+      grid-gap: 20px;
+    }
+    .blue {
+      background-color: deepskyblue;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+  </div>
+  <div class="grid-fr">
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+  </div>
+  <div class="grid-another">
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+  </div>
+  <div class="grid-fr-another">
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+    <div class="blue">Hi!</div>
+  </div>
+</body>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <iframe
+          width="100%"
+          height="100%"
+          frameborder="0"
+          sandbox="allow-scripts"
+          name="iframeResult"
+          allowfullscreen="true"
+          src="./Program_css_grid_fr_demo.html"
+        >
+        </iframe>
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          for (let i = 1; i < 50; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+          document.getElementById("pre-code1").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

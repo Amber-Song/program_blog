@@ -79,3 +79,7 @@ a.codestyle:hover {
 .image {
   border: 1px solid black;
 }
+textarea {
+  font-size: large;
+  line-height: 160%;
+}

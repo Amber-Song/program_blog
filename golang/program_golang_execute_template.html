@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_golang.html"
+          class="codestyle"
+          >Golang</a
+        >/<a href="./program_golang_execute_template.html" class="codestyle"
+          >\[Golang\]\ execute\ template</a
+        >
+      </p>
+      <h1>[Golang] execute template</h1>
+
+      <div class="info">
+        When tmpl.Execute function or tmpl.ExecuteTemplate function is called, the variable in the HTML will be replaced by the data which pass in the function and the action will be executed. <br>
+As I was confused at the beginning, I thought only the variables in the HTML body will be executed. However, the truth is the variable from wherever in the HTML file will be executed, even it is in javascript (script tag) or CSS (style tag).
+        <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">HTML:</div>
+      <div class="title-for-container">Golang:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="27" disabled>
+<html>
+  <head>
+    <style>
+      #width {
+        background-color: aquamarine;
+        width: {{.}}px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="width">This element's width is {{.}} px</div>
+    <button onclick="doubleWidth()">Click here to double the width</button>
+    <br />
+
+    <script>
+      function doubleWidth() {
+        let width = {{.}} * 2; 
+        document.getElementById("width").style.width = width;
+      }
+    </script>
+  </body>
+</html>
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <img src="../static/parse_template.png" alt="parse tempalte" width="500px">
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          // TODO: change the i < max to how many lines in the code
+          for (let i = 1; i < 27; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>

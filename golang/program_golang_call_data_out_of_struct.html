@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <!-- This is title -->
+      <p class="title">
+        amber$ cd <a href="../Program_main.html" class="codestyle">main</a>/<a
+          href="../Program_golang.html"
+          class="codestyle"
+          >Golang</a
+        >/<a
+          href="./program_golang_call_data_out_of_struct.html"
+          class="codestyle"
+          >\[Golang\]\ get\ data\ out\ of\ struct</a
+        >
+      </p>
+      <h1>[Golang] get data out of struct</h1>
+
+      <div class="info">
+        In the {{ range .}} {{ end }}, only data in the variable could be
+        gotten. So in this situation, there are two ways to get data out of the
+        struct in the template. <br />
+        <ul>
+          <li>use $ simple to go back to the root, eg {{ $.another.width }}</li>
+          <li>make a variable to get that before range. eg {{ $root := . }}</li>
+        </ul>
+        <br />
+        Here is the demo:
+      </div>
+
+      <!-- This is the container title for the code and result -->
+      <div class="title-for-container">Code:</div>
+      <div class="title-for-container">Result:</div>
+      <!-- This is code on the left -->
+      <div class="code-container">
+        <div class="pre-code" id="pre-code"></div>
+        <textarea cols="30" rows="25" disabled>
+func demo4Handler(w http.ResponseWriter, r *http.Request) {
+    width := []int{100, 200, 300}
+    name := "Amber"
+    user := User{Name: name, Width: width}
+    t, _ := template.New("demo").Parse(`<html>
+    <body>
+        {{ range.Width }}
+        <div style="width:{{.}}px; background-color:green;">Hi {{
+            $.Name
+          }}</div>
+        {{ end }}
+    
+        {{ $name := .Name}}
+        {{ range.Width }}
+        <div style="width:{{.}}px; background-color:green;">Hi {{ $name }}</div>
+        {{ end }}
+    </body>
+    </html>`)
+    t.Execute(w, user)
+}
+        </textarea>
+      </div>
+
+      <!-- This is result on the right -->
+      <div class="result-container">
+        <img src="../static/call_element_out_of_struct.png" width="300px" />
+      </div>
+
+      <script>
+        window.onload = function() {
+          let text = "";
+          // TODO: change the i < max to how many lines in the code
+          for (let i = 1; i < 25; i++) {
+            text += i + "<br/>";
+          }
+          document.getElementById("pre-code").innerHTML = text;
+        };
+      </script>
+    </div>
+  </body>
+</html>
