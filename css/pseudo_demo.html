@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <style>
+      .demo {
+        background-color: blue;
+        width: var(--width);
+      }
+      .demo::after {
+        content: "";
+        background-color: red;
+        position: absolute;
+        top: var(--top);
+        bottom: var(--bottom);
+        left: var(--left);
+        right: var(--right);
+      }
+    </style>
+  </head>
+  <body>
+    I was writing inline style, but I realised that I wanted to use pseduo code
+    in inline code.
+    <div style="position:relative; width: 50%; height: 100px; ">
+      <div
+        class="demo"
+        style="--width:50%; --top:5px; --bottom:10px; --left:20px; --right:10px;"
+      >
+        something
+      </div>
+    </div>
+  </body>
+</html>

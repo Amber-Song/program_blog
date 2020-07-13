@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <style>
+      .vertical-rl {
+        height: 250px;
+        margin-bottom: 30px;
+        writing-mode: vertical-rl;
+      }
+      .vertical-lr {
+        height: 250px;
+        margin-bottom: 30px;
+        writing-mode: vertical-lr;
+      }
+      .rotate {
+        height: 250px;
+        margin-bottom: 30px;
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-rl">
+      This line is in vertical-rl writing mode. <br />
+      Another line to show the block direction.
+    </div>
+    <div class="vertical-lr">
+      This line is in vertical-lr writing mode. <br />
+      Another line to show the block direction.
+    </div>
+
+    <div class="rotate">
+      Actually the direction in writing mode rl which indicates right to left
+      and lr which indicates left to right doesn't show us what we expect. They
+      are all block direction instead of character direction which means all the
+      character are rotated clockwise. So to make it what we think, we need to
+      rotate the text 180 degree. <br />
+      We can see the inline direction goes from top to bottom to bottom to top
+      now. <br />
+      I tried to use lr in this case as well. It seems like it doesn't work, as
+      I expect it to goes from left to right.
+    </div>
+  </body>
+</html>

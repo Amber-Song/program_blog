@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script>
+      let nameChinese = "Song";
+      var nameEnglish = "Amber";
+      function show() {
+        document.getElementById("name").innerHTML = nameEnglish + nameChinese;
+      }
+    </script>
+  </head>
+  <body>
+    <button id="demo" onclick="show()">Hello</button>
+    <span id="name"></span>
+    <button onclick="showChinese()">Only show family name:</button>
+    <button onclick="showEnglish()">Only show first name:</button>
+  </body>
+  <script>
+    function showChinese() {
+      document.getElementById("name").innerHTML = nameChinese;
+    }
+    function showEnglish() {
+      document.getElementById("name").innerHTML = nameEnglish;
+    }
+  </script>
+</html>
