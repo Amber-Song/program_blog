@@ -1,0 +1,48 @@
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <form>
+      <span>Name: </span>
+      <input type="text" />
+      <br />
+
+      <button type="button" id="more" onclick="moreIJHTML()">
+        Add more element using element.insertAdjacentHTML(position, text)
+      </button>
+      <button type="button" onclick="moreAC()">
+        Add more element using parentNode.insertBefore(newNode, referenceNode)
+      </button>
+    </form>
+
+    <script>
+      function moreIJHTML() {
+        let button = document.getElementById("more");
+        button.insertAdjacentHTML(
+          "beforebegin",
+          `<span>Alias: </span>
+          <input type="text" />
+          <br/>`
+        );
+      }
+
+      function moreAC() {
+        let span = document.createElement("span");
+        let input = document.createElement("input");
+        let br = document.createElement("br");
+        span.innerHTML = "Alias: ";
+        input.type = "text";
+
+        let parent = document.getElementById("more").parentNode;
+        let ref = document.getElementById("more");
+        parent.insertBefore(span, ref);
+        parent.insertBefore(input, ref);
+        parent.insertBefore(br, ref);
+      }
+    </script>
+  </body>
+</html>

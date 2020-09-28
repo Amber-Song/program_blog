@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="stylesheet" href="../program_blog.css" />
   </head>
 
   <body>
     <div class="web-page">
-      <!-- This is title -->
-      <p class="title">
+      <header class="title">
         amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
           href="../Program_js.html"
           class="codestyle"
@@ -15,7 +18,7 @@
         >/<a href="./Program_js_json.html" class="codestyle"
           >\[JS\]\ JSON\ nested\ array\ and\ object.html</a
         >
-      </p>
+      </header>
       <h1>[JS] JSON nested array and object</h1>
 
       <div class="info">
@@ -39,76 +42,24 @@
         could loop the restaurant name inside the city or town name, then get
         the index in the object, loop through that or the restaurant name to get
         dish information. Here is the code for array and how I accessed data:
-      </div>
 
-      <!-- This is the container title for the code and result -->
-      <div class="title-for-container">Code:</div>
-      <div class="title-for-container">Result:</div>
-      <!-- This is code on the left -->
-      <div class="code-container">
-        <div class="pre-code" id="pre-code"></div>
-        <textarea cols="30" rows="48" disabled>
-let dudRestaurant = { 
-    "Morning Magpie": [ 
-        { 
-            Name: "Ice coffee", 
-            Contain: "coffee, milk, cream, ice cream", 
-            Price: "$7", 
-            V: "Vegetarian Friendly"
-        } 
-    ], 
-    "Union Co Cafe": [ 
-        { 
-            Name: "Mochaccino", 
-            Contain: "Coffee, Hot chocolate, Milk", 
-            Price: "$?", 
-            V: "Vegetarian Friendly",
-        }, 
-        { 
-            Name: "Panforte and Long black", 
-            Contain: "You may want to ask", 
-            Price: "$? &amp; $?", 
-            V: "Vegetarian Friendly", 
-        } 
-    ] 
-}
-
-let wrongText = "";
-let rightText = "";
-for (restaurant in dudRestaurant) {
-    wrongText += "<h3>" + restaurant + "</h3>";
-    rightText += "<h3>" + restaurant + "</h3>";
-    // This is the wrong demo
-    for (dishId in restaurant) {
-        wrongText +=
-        restaurant[dishId].Name +
-        " is " +
-        restaurant[dishId].Price +
-        "<br/>";
-    }
-    // This is the right demo
-    for (dishId in dudRestaurant[restaurant]) {
-        rightText +=
-        dudRestaurant[restaurant][dishId].Name +
-        " is " +
-        dudRestaurant[restaurant][dishId].Price +
-        "<br/>";
-    }
-}
-        </textarea>
-      </div>
-
-      <!-- This is result on the right -->
-      <div class="result-container">
         <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          sandbox="allow-scripts"
-          name="iframeResult"
+          height="634"
+          style="width: 100%;"
+          scrolling="no"
+          title="JavaScript_json_demo"
+          src="https://codepen.io/AmberSong/embed/XWdQxvq?height=634&theme-id=dark&default-tab=js,result"
+          frameborder="no"
+          loading="lazy"
+          allowtransparency="true"
           allowfullscreen="true"
-          src="./Program_js_json_demo.html"
         >
+          See the Pen
+          <a href="https://codepen.io/AmberSong/pen/XWdQxvq"
+            >JavaScript_json_demo</a
+          >
+          by JihongSong (<a href="https://codepen.io/AmberSong">@AmberSong</a>)
+          on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
 
@@ -126,16 +77,6 @@ for (restaurant in dudRestaurant) {
         dudRestaurant["restaurant"], in this case, the restaurant is not a key
         name, it showed nothing.
       </div>
-      <script>
-        window.onload = function() {
-          let text = "";
-          // TODO: change the i < max to how many lines in the code
-          for (let i = 1; i < 49; i++) {
-            text += i + "<br/>";
-          }
-          document.getElementById("pre-code").innerHTML = text;
-        };
-      </script>
     </div>
   </body>
 </html>
