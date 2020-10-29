@@ -6,7 +6,6 @@
 
   <body>
     <div class="web-page">
-      <!-- This is title -->
       <p class="title">
         amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
           href="../Program_css.html"
@@ -26,66 +25,26 @@
         just didn't match. So that could be solved by adding the tag name, like
         div.classname. <br />
         Here is the demo:
-      </div>
 
-      <!-- This is the container title for the code and result -->
-      <div class="title-for-container">Code:</div>
-      <div class="title-for-container">Result:</div>
-      <!-- This is code on the left -->
-      <div class="code-container">
-        <div class="pre-code" id="pre-code"></div>
-        <textarea cols="30" rows="26" disabled>
-    <head>
-        <style>
-            .change {
-            background-color: deepskyblue;
-            }
-            .no {
-            background-color: mediumblue;
-            }
-            @media only screen and (max-width: 600px) {
-            div.change {
-                background-color: lime;
-            }
-            .no {
-                background-color: seagreen;
-            }
-            }
-        </style>
-    </head>
-    <body>
-        <div>When you change the size of the webpage,</div>
-        <div class="change">this element's style will change.</div>
-        <div class="no">While this element's style will not.</div>
-    </body>
-        </textarea>
-      </div>
-
-      <!-- This is result on the right -->
-      <!-- TODO: src need to change -->
-      <div class="result-container">
         <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          sandbox="allow-scripts"
-          name="iframeResult"
+          height="450"
+          style="width: 100%;"
+          scrolling="no"
+          title="CSS_classname_match_demo"
+          src="https://codepen.io/AmberSong/embed/XWKMKeX?height=265&theme-id=dark&default-tab=css,result"
+          frameborder="no"
+          loading="lazy"
+          allowtransparency="true"
           allowfullscreen="true"
-          src="./Program_css_Match_demo.html"
         >
+          See the Pen
+          <a href="https://codepen.io/AmberSong/pen/XWKMKeX"
+            >CSS_classname_match_demo</a
+          >
+          by JihongSong (<a href="https://codepen.io/AmberSong">@AmberSong</a>)
+          on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-
-      <script>
-        window.onload = function() {
-          let text = "";
-          // TODO: change the i < max to how many lines in the code
-          for (let i = 1; i < 27; i++) {
-            text += i + "<br/>";
-          }
-          document.getElementById("pre-code").innerHTML = text;
-        };
-      </script>
     </div>
   </body>
 </html>

@@ -6,7 +6,6 @@
 
   <body>
     <div class="web-page">
-      <!-- This is title -->
       <p class="title">
         amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
           href="../Program_css.html"
@@ -24,73 +23,24 @@
         found that if an element displayed as an inline element, any height and
         width properties would have no effect. So I set the display to block in
         order to make the setting of height and width work. Here is the demo:
-      </div>
-
-      <!-- This is the container title for the code and result -->
-      <div class="title-for-container">Code:</div>
-      <div class="title-for-container">Result:</div>
-      <!-- This is code on the left -->
-      <div class="code-container">
-        <div class="pre-code" id="pre-code"></div>
-        <textarea cols="30" rows="47" disabled>
-<head>
-    <style>
-      .display-inline {
-        height: 50px;
-        width: 150px;
-        border: 1px solid black;
-        margin-bottom: 20px;
-      }
-      .display-block {
-        display: block;
-        height: 50px;
-        width: 150px;
-        border: 1px solid black;
-        margin-bottom: 20px;
-      }
-      .display-inline-block {
-        display: inline-block;
-        height: 50px;
-        width: 150px;
-        border: 1px solid black;
-        margin-bottom: 20px;
-      }
-    </style>
-</head>
-<body>
-    <div>
-      This link links to this page! The border is added to make it clear.
-    </div>
-    <a href="./Program_css_a_height.html" class="display-inline">
-      With the height of 50px and width of 150px</a
-    ><br />
-    <a href="./Program_css_a_height.html" class="display-block">
-      With the height of 50px and width of 150px</a
-    ><br />
-    <a href="./Program_css_a_height.html" class="display-inline-block">
-      With the height of 50px and width of 150px</a
-    ><br />
-    <span class="display-inline"
-      >With the height of 50px and width of 150px</span
-    ><br />
-    <span class="display-block"
-      >With the height of 50px and width of 150px</span
-    >
-</body>
-        </textarea>
-      </div>
-
-      <!-- This is result on the right -->
-      <div class="result-container">
+        <br /><br />
         <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          sandbox="allow-scripts"
-          name="iframeResult"
+          height="477"
+          style="width: 100%;"
+          scrolling="no"
+          title="CSS_height_width_of_inline_element_demo"
+          src="https://codepen.io/AmberSong/embed/XWKZBMp?height=477&theme-id=dark&default-tab=html,result"
+          frameborder="no"
+          loading="lazy"
+          allowtransparency="true"
           allowfullscreen="true"
-          src="./Program_css_a_height_demo.html"
         >
+          See the Pen
+          <a href="https://codepen.io/AmberSong/pen/XWKZBMp"
+            >CSS_height_width_of_inline_element_demo</a
+          >
+          by JihongSong (<a href="https://codepen.io/AmberSong">@AmberSong</a>)
+          on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
 
@@ -99,17 +49,6 @@
         elements didn't work, Margin of that didn't work as well. And set the
         display to block or inline-block do help.
       </div>
-
-      <script>
-        window.onload = function() {
-          let text = "";
-          for (let i = 1; i < 46; i++) {
-            text += i + "<br/>";
-          }
-          document.getElementById("pre-code").innerHTML = text;
-          document.getElementById("pre-code1").innerHTML = text;
-        };
-      </script>
     </div>
   </body>
 </html>

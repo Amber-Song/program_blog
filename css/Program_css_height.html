@@ -6,7 +6,6 @@
 
   <body>
     <div class="web-page">
-      <!-- This is title -->
       <p class="title">
         amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
           href="../Program_css.html"
@@ -20,44 +19,25 @@
 
       <div class="info">
         I want to make the content take over the whole screen but it only set
-        the body element's height didn't work! Here is the demo:
-      </div>
-
-      <!-- This is the container title for the code and result -->
-      <div class="title-for-container">Code:</div>
-      <div class="title-for-container">Result:</div>
-      <!-- This is code on the left -->
-      <div class="code-container">
-        <div class="pre-code" id="pre-code"></div>
-        <textarea cols="30" rows="15" disabled>
-<head>
-    <style>
-        div.wholeScreen {
-        height: 100%;
-        background-color: khaki;
-        }
-    </style>
-</head>
-<body>
-    <div class="wholeScreen">
-        This content should take the whole screen even it only has two sentences.
-        But it didn't, we could tell by the background color.
-    </div>
-</body>
-        </textarea>
-      </div>
-
-      <!-- This is result on the right -->
-      <div class="result-container">
+        the body element's height didn't work! Here is the demo: <br />
+        <br />
         <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          sandbox="allow-scripts"
-          name="iframeResult"
+          height="265"
+          style="width: 100%;"
+          scrolling="no"
+          title="CSS_height_without_html_and_body_set_demo"
+          src="https://codepen.io/AmberSong/embed/gOMvKpW?height=265&theme-id=dark&default-tab=html,result"
+          frameborder="no"
+          loading="lazy"
+          allowtransparency="true"
           allowfullscreen="true"
-          src="./Program_css_height_demo.html"
         >
+          See the Pen
+          <a href="https://codepen.io/AmberSong/pen/gOMvKpW"
+            >CSS_height_without_html_and_body_set_demo</a
+          >
+          by JihongSong (<a href="https://codepen.io/AmberSong">@AmberSong</a>)
+          on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
 
@@ -69,57 +49,26 @@
         means height:100% in the div will not take the whole screen. <br />
         To solve this, you could also set the html and body to 100% or you could
         set the height to 100vh. vh relative to 1% of the height of the
-        viewport.
-      </div>
-
-      <div class="title-for-container">Code:</div>
-      <div class="title-for-container">Result:</div>
-      <div class="code-container">
-        <div class="pre-code" id="pre-code1"></div>
-        <textarea cols="30" rows="16" disabled>
-<head>
-    <style>
-        html, body {
-            height: 100%;
-        }
-        div.wholeScreen {
-        height: 100%;
-        background-color: khaki;
-        }
-    </style>
-</head>
-<body>
-    <div class="wholeScreen">
-        Now it works.
-    </div>
-</body>
-        </textarea>
-      </div>
-
-      <!-- This is result on the right -->
-      <div class="result-container">
+        viewport. <br /><br />
         <iframe
-          width="100%"
-          height="100%"
-          frameborder="0"
-          sandbox="allow-scripts"
-          name="iframeResult"
+          height="265"
+          style="width: 100%;"
+          scrolling="no"
+          title="CSS_height_with_html_and_body_set_demo"
+          src="https://codepen.io/AmberSong/embed/wvWyXKp?height=265&theme-id=dark&default-tab=html,result"
+          frameborder="no"
+          loading="lazy"
+          allowtransparency="true"
           allowfullscreen="true"
-          src="./Program_css_height_demo1.html"
         >
+          See the Pen
+          <a href="https://codepen.io/AmberSong/pen/wvWyXKp"
+            >CSS_height_with_html_and_body_set_demo</a
+          >
+          by JihongSong (<a href="https://codepen.io/AmberSong">@AmberSong</a>)
+          on <a href="https://codepen.io">CodePen</a>.
         </iframe>
       </div>
-
-      <script>
-        window.onload = function() {
-          let text = "";
-          for (let i = 1; i < 17; i++) {
-            text += i + "<br/>";
-          }
-          document.getElementById("pre-code").innerHTML = text;
-          document.getElementById("pre-code1").innerHTML = text;
-        };
-      </script>
     </div>
   </body>
 </html>
