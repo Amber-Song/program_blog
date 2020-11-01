@@ -6,7 +6,6 @@
 
   <body>
     <div class="web-page">
-      <!-- This is title -->
       <p class="title">
         amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
           href="../Program_golang.html"
@@ -48,71 +47,13 @@
         But I am still not sure about the second one. I tried in demo (line 26 -
         30) by just changing the value in map. It works well.
         <br />
-        Here is the demo:
+        Here is the demo: <br /><br />
+        <iframe
+          src="https://play.golang.org/p/t2zjEeHYYjx"
+          width="90%"
+          height="520px"
+        ></iframe>
       </div>
-
-      <!-- This is the container title for the code and result -->
-      <div class="title-for-container">Code:</div>
-      <div class="title-for-container">Result:</div>
-      <!-- This is code on the left -->
-      <div class="code-container">
-        <div class="pre-code" id="pre-code"></div>
-        <textarea cols="30" rows="34" disabled>
-package main
-
-import (
-  "fmt"
-)
-
-type pointer struct {
-  x int
-  y int
-}
-
-var pointers map[string]pointer = make(map[string]pointer)
-
-func main() {
-  pointer0 := pointer{x:50,y:100}
-  pointers["a"] = pointer0
-  fmt.Println(pointers)
-  
-  // I want to change x to 100 now
-  // pointers["a"].x = 100
-  // fmt.Println(pointers)	
-  
-  pointers["a"] = pointer{x:100,y:100} 
-  fmt.Println(pointers)	
-  
-  x := make(map[string]string)
-  x = map[string]string{"Amber":"Hi"}
-  fmt.Println(x)
-  x["Amber"] = "Hello"
-  fmt.Println(x)
-}
-        </textarea>
-      </div>
-
-      <!-- This is result on the right -->
-      <div class="result-container">
-        <a href="https://play.golang.org/p/q9qbmn7EwrL">Run on Go Playground</a>
-        <br />
-        <br />
-        I got the result as follow: <br />
-        map[a:{50 100}] <br />
-        map[a:{100 100}]<br />
-        map[Amber:Hi]<br />
-        map[Amber:Hello]<br />
-      </div>
-
-      <script>
-        window.onload = function() {
-          let text = "";
-          for (let i = 1; i < 33; i++) {
-            text += i + "<br/>";
-          }
-          document.getElementById("pre-code").innerHTML = text;
-        };
-      </script>
     </div>
   </body>
 </html>
