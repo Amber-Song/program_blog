@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a href="./Program_react_array_Map_Function.html" class="codestyle"
+          >\[React\]\ array\ map\ function.html</a
+        >
+      </header>
+
+      <h1>
+        [React] array map function
+      </h1>
+
+      <div class="info">
+        When I was writing the project dictionary, in
+        <a
+          href="https://github.com/Amber-Song/dictionary/blob/comment-version/frontend/src/features/dictionary/MeaningBlock.js"
+          >MeaningBlock.js file</a
+        >, I tried to iterate the meanings array to list all the meaning
+        following a number. Here is the code:
+
+        <pre class="code">
+          <code>
+    {meaningsBlock.DefaultMeanings.map((id, meaning) => {
+      return (
+        &lt;div key={id} className="meaning-li"&gt;
+          {id}
+          {meaning}
+        &lt;/div&gt;
+      );
+    })}
+          </code>
+        </pre>
+
+        But it didn't turn out to be what I wanted. It has meaning followed by
+        the number, then I realised content come first than id in array.map
+        argument. So it should be:
+
+        <pre class="code">
+          <code>
+    {meaningsBlock.DefaultMeanings.map((meaning, id) => {
+      return (
+        &lt;div key={id} className="meaning-li"&gt;
+          {id}
+          {meaning}
+        &lt;/div&gt;
+      );
+    })}
+          </code>
+        </pre>
+
+        Or:
+        <pre class="code">
+          <code>
+    {meaningsBlock.DefaultMeanings.map((meaning, id) => (
+      &lt;div key={id} className="meaning-li"&gt;
+        {id}
+        {meaning}
+      &lt;/div&gt;
+    ))}
+          </code>
+        </pre>
+
+        But you know, you can always use ol and li tag to list items. <br />
+        And I was confused at the beginning by the documentation, as it seems
+        like when you iterate the array, it can return the transforming item as
+        part of the new array without return keyword but in some examples, it
+        returns something with the keyword. The item could be numbers, strings
+        or even jsx objects. Now I understand that returning transforming array
+        is one situation. In the other situation, there are more things you want
+        to do during iterating so it can't be made into only one line of code so
+        it has to be a function. In function, you return the item with the
+        return keyword.
+      </div>
+    </div>
+  </body>
+</html>

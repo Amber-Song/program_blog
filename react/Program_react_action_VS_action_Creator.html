@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a
+          href="./Program_react_action_VS_action_Creator.html"
+          class="codestyle"
+          >\[React\]\ Action\ VS\ Action\ creator\ \[Question mark\].html</a
+        >
+      </header>
+
+      <h1>
+        [React] Action VS Action creator [Question mark]
+      </h1>
+
+      <div class="info">
+        I was confused by the action and action creator. So in this article, I
+        will explain how I understand it now. <br />
+        <br />
+
+        <em
+          >In short, action is an object while action creator is a function.</em
+        >
+
+        <pre class="code">
+          <code>
+    // Action creator return an action
+    const addWord = (word, meaning) => {
+        const lastCheckTime = new Date().toGMTString();
+
+        return {
+            type: "ADDWORD",
+            payload: {
+            word,
+            meaning,
+            lastCheckTime,
+            checkPeriod: 0
+            }
+        };
+    };
+          </code>
+        </pre>
+
+        addWord() is action creator. It is a function. And it creates action by
+        returning an object. While that object is an action.
+
+        <pre class="code">
+            <code>
+    return &lt;button onClick={() => dispatch(addWord(word, meaning))}&gt;+&lt;/button&gt;;
+            </code>
+        </pre>
+
+        When the onClick function is triggered, it dispatches the action, or to
+        say the object.
+        <br /><br />
+
+        But there is one thing that I am still not that sure. When an action is
+        dispatched, how could the react know which reducer is that if there are
+        multiple reducers?
+      </div>
+    </div>
+  </body>
+</html>

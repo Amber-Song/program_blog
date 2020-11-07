@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a href="./Program_react_onClick_Function.html" class="codestyle"
+          >\[React\]\ function\ vs\ function()\ in\ react.html</a
+        >
+      </header>
+
+      <h1>
+        [React] function vs function() in react
+      </h1>
+
+      <div class="info">
+        I came across a problem in
+        <a
+          href="https://github.com/Amber-Song/dictionary/blob/comment-version/frontend/src/features/dictionary/AddWordButton.js"
+          >AddWordButton file</a
+        >, I tried to dispatch the addWord action to add a word in the redux.
+        But I found that before I clicked the button, this function has already
+        been run! The code is like this:
+
+        <pre class="code">
+            <code>
+    return &lt;button onClick={dispatch(addWord(word, meaning))}&gt;+&lt;/button&gt;;
+            </code>
+        </pre>
+
+        After I searched, I found that searching() is calling the function
+        referenced by searching. Searching itself is just a reference to a
+        function, it doesn't call the function.
+        <br /><br />
+        So in reactjs, if I take onclick as an example:
+        <ul>
+          <li>
+            if that is a function without parameter, you should the function
+            like this. <br />
+            <code>
+              &lt;button onClick="{searching}"&gt;Search&lt;/button&gt;
+            </code>
+          </li>
+          <li>
+            if that is a function with parameter, you should the function like
+            this. <br />
+            <code>
+              &lt;button onClick={() => dispatch(addWord(word,
+              meaning))}&gt;+&lt;/button&gt;
+            </code>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

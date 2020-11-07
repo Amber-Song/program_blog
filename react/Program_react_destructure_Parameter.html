@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a href="./Program_react_destructure_Parameter.html" class="codestyle"
+          >\[React\]\ destructure\ parameter.html</a
+        >
+      </header>
+
+      <h1>
+        [React] destructure parameter
+      </h1>
+
+      <div class="info">
+        When I wrote in reactjs, I came across a problem like this: <br /><br />
+
+        <div class="error-message">
+          TypeError: setSearchInput is not a function
+        </div>
+        <br />
+
+        The code of child component is like this:
+        <pre class="code">
+          <code>
+    const SearchInput = (searchInput, setSearchInput, setWord, setMeaning) => {
+        // doing something
+    };
+          </code>
+        </pre>
+
+        The code of parent component is like this:
+        <pre class="code">
+          <code>
+    &lt;SearchInput
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        setMeaning={setMeaning}
+        setWord={setWord}
+    /&gt;
+          </code>
+        </pre>
+
+        After I searched online, I found that the original way to receive the
+        properties is like this.
+        <code>const SearchInput = (props) => {} </code>
+        In this way, the functional component receives the prop, an object, as
+        the first argument. And when I want to access the argument I passed in,
+        I would call it like
+        <code>{props.searchInput}</code>. <br />
+        But sometimes it is better to destructure the object to make it clear
+        what parameters are passed as properties. In this way, I destructure the
+        object by wrapping all of the items in curly brackets, like this
+        <pre class="code">
+            <code>
+    const SearchInput = ({searchInput, setSearchInput, setWord, setMeaning}) => { 
+        // doing something 
+    };
+            </code>
+        </pre>
+
+        So when I call it, I can directly call it by the name, like
+        <code>{searchInput}</code>.
+      </div>
+    </div>
+  </body>
+</html>

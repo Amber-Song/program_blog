@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a
+          href="./Program_react_reducer_Return_Undefined.html"
+          class="codestyle"
+          >\[React\]\ Reducer\ return\ undefined\ during\ initialization.html</a
+        >
+      </header>
+
+      <h1>
+        [React] Reducer return undefined during initialization
+      </h1>
+
+      <div class="info">
+        When I was working on the redux reducer in
+        <a
+          href="https://github.com/Amber-Song/dictionary/blob/comment-version/frontend/src/features/dictionary/glossarySlice.js"
+          >glossarySlice file</a
+        >, I came across an error like this and my reducer file is like
+        following.
+        <br />
+        <br />
+
+        <div class="error-message">
+          Error: Reducer "glossary" returned undefined during initialization. If
+          the state passed to the reducer is undefined, you must explicitly
+          return the initial state. The initial state may not be undefined. If
+          you don't want to set a value for this reducer, you can use null
+          instead of undefined.
+        </div>
+
+        <pre class="code">
+          <code>
+    const glossarySlice = (state = initState, action) => {
+        switch (action.type) {
+        case "ADDWORD":
+            return [...state, action.payload];
+    
+        case "UPDATEWORD": {
+            const word = action.payload.word;
+            let newArray = state.slice();
+            const index = newArray.findIndex(item => item.word === word);
+            newArray[index] = action.payload;
+            return newArray;
+        }
+    
+        case "REMOVEWORD": {
+            const word = action.payload.word;
+            let newArray = state.slice();
+            const index = newArray.findIndex(item => item.word === word);
+            newArray.splice(index, 1);
+            return newArray;
+        }
+    };
+          </code>
+        </pre>
+
+        After searching online, I found out that I have to add default case in
+        the switch. Because for the first time, reducer doesn't have any value
+        in which situation it can't match any of the cases. So it needs to fail
+        in one case to initiate which is the default case. So the correct one
+        should be:
+
+        <pre class="code">
+            <code>
+    const glossarySlice = (state = initState, action) => {
+        switch (action.type) {
+        case "ADDWORD":
+            return [...state, action.payload];
+    
+        case "UPDATEWORD": {
+            const word = action.payload.word;
+            let newArray = state.slice();
+            const index = newArray.findIndex(item => item.word === word);
+            newArray[index] = action.payload;
+            return newArray;
+        }
+    
+        case "REMOVEWORD": {
+            const word = action.payload.word;
+            let newArray = state.slice();
+            const index = newArray.findIndex(item => item.word === word);
+            newArray.splice(index, 1);
+            return newArray;
+        }
+
+        default:
+            return state;
+    };
+            </code>
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a href="./Program_react_reducers_Update_Array.html" class="codestyle"
+          >\[React\]\ update\ array\ in\ redux</a
+        >
+      </header>
+
+      <h1>
+        [React] update array in redux
+      </h1>
+
+      <div class="info">
+        <em
+          >* In Redux, our reducers are never allowed to mutate the original /
+          current state values!</em
+        >
+        <br />
+        I find it very hard to keep that in mind when I work with array. So there is one time that I wrote reducer like this:
+
+        <pre class="code">
+            <code>
+    const glossarySlice = (state = initState, action) => {
+        switch (action.type) {
+            case "ADDWORD":
+                return state.push(action.payload);
+        
+            // Some other cases
+        }
+    };
+            </code>
+        </pre>
+
+        And then I received an error from another file which made me very confused at that time.
+
+        <div class="error-message">
+            useSelector.js:38 Uncaught TypeError: state.glossary.findIndex is not a function
+        </div>
+        <br>
+        Then I realised I mutated the array in redux by using push method. Js array methods like push, pop and so on need to pay extra attention to. 
+        Cause using methods like that may make you break the redux rule without any notice. <br>
+        In my case, the push method will push in an item at the end of the array and return the length of the array. 
+        So my state array then became a number. As there is no findIndex such a function of the number, I got an error. <br>
+        The right way to write this is:
+
+        <pre class="code">
+            <code>
+    const glossarySlice = (state = initState, action) => {
+        switch (action.type) {
+            case "ADDWORD":
+                return [...state, action.payload];
+        
+            // Some other cases
+        }
+    };
+            </code>
+        </pre> 
+        To other changes that you want to apply to an array, the way I am using is to make a copy of the array and then apply changes to new array and return the new array.
+
+    </div>
+  </body>
+</html>

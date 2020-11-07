@@ -2,7 +2,8 @@
   box-sizing: border-box;
 }
 .web-page {
-  width: 90%;
+  margin: auto;
+  width: 96%;
   height: 100%;
   display: grid;
   display: -ms-grid;
@@ -82,4 +83,16 @@ a.codestyle:hover {
 textarea {
   font-size: large;
   line-height: 160%;
+}
+
+.code {
+  background: black;
+  color: #f1f1f1;
+}
+
+.error-message {
+  color: #cc0000;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 15px;
 }

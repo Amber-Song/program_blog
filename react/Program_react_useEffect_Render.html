@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Programming blog -- Amber</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="../program_blog.css" />
+  </head>
+
+  <body>
+    <div class="web-page">
+      <header class="title">
+        amber$ cd <a href="../index.html" class="codestyle">main</a>/<a
+          href="../Program_react.html"
+          class="codestyle"
+          >React</a
+        >/<a href="./Program_react_useEffect_Render.html" class="codestyle"
+          >\[React\]\ rendering\ issue\ caused\ by\ useEffect.html</a
+        >
+      </header>
+
+      <h1>
+        [React] rendering issue caused by useEffect
+      </h1>
+
+      <div class="info">
+        In the document, there are three conditions that useEffect hook will run
+        the function and re-render the component:
+
+        <ol>
+          <li>
+            <code>useEffect(() => { // do something })</code> In this case, as
+            long as the state or props change, the component will re-render and
+            the side effect will perform.
+          </li>
+          <li>
+            <code>useEffect(() => { // doing something }, [item])</code> In this
+            case, every time the item change, the side effect will perform.
+          </li>
+          <li>
+            <code>useEffect(() => { // doing something }, [])</code> In this
+            case, it will only perform the side effect during mount lifecycle.
+          </li>
+        </ol>
+
+        I got some weird rendering issues when I used useEffect hook. <br />
+        <br />
+        The first one is that when I wrote the
+        <a
+          href="https://github.com/Amber-Song/dictionary/blob/comment-version/frontend/src/features/dictionary/SearchInput.js"
+          >SearchInput file</a
+        >, I tried to set the word, use Axios to query the server for meaning
+        and then update the meaning. But I fail into an infinite rendering loop.
+
+        <pre class="code">
+          <code>
+    const SearchInput = ({ word, setWord, setMeaning }) => {
+        useEffect(() => {
+            axios
+                .get(url)
+                .then(res => {
+                    setWord(searchInput);
+                    setMeaning({
+                    Word: res.data.Word,
+                    Audio: res.data.Audio,
+                    PhoneticNotation: res.data.PhoneticNotation,
+                    Picture: res.data.Picture,
+                    MeaningsBlocks: res.data.MeaningsBlocks
+                    });
+                });
+            };
+        })
+
+        // something
+    }
+          </code>
+        </pre>
+
+        After double-checking, I found that when the function in the useEffect
+        hook runs, the word will be reset which cause the component to rerender
+        and then the function in useEffect will run again. Then it runs on and
+        on and on, just failing into an infinite rendering loop by the end.
+        <br />
+        <br />
+        To fix that I used the third way of doing it but forgetting that update
+        lifecycle is not mounted lifecycle. So here I came across the second
+        issue after I searched a word and tried to search another one, the
+        meaning remains the same. Here is the code:
+        <pre class="code">
+            <code>
+    const SearchInput = ({ word, setWord, setMeaning }) => {
+        useEffect(() => {
+            axios
+                .get(url)
+                .then(res => {
+                    setWord(searchInput);
+                    setMeaning({
+                    Word: res.data.Word,
+                    Audio: res.data.Audio,
+                    PhoneticNotation: res.data.PhoneticNotation,
+                    Picture: res.data.Picture,
+                    MeaningsBlocks: res.data.MeaningsBlocks
+                    });
+                });
+            };
+        }, [])
+
+        // something
+    }
+            </code>
+        </pre>
+        To solve that, I tried not to change any properties and states inside
+        the useEffect hook. And write the changes in the function and use the
+        onClick function to trigger.
+      </div>
+    </div>
+  </body>
+</html>
